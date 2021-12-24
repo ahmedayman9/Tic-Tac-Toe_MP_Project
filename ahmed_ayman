@@ -1,0 +1,59 @@
+ 
+ ;COLORLASTDIGIT
+ 
+ 
+ printCharCOLOR PROC 
+ 	MOV BP, BX
+ 	;MOV DI,
+ 	mov di, cx 
+ 	    
+	MOV AL,DL
+	
+	CMP AL,'X'
+	JE L1 
+	CMP AL,'O'
+	JE L2     
+	jmp L3
+	
+	
+	L1:
+	
+    MOV AH, 9  	
+	MOV BL, 10
+	MOV CX,1
+	INT 10H  
+	mov dl,al   
+	mov ah,2   
+	int 21h
+	JMP EXIT2
+	
+	L2:
+	
+	MOV AH, 9 
+	MOV BL, 12
+	MOV CX,1
+	INT 10H  
+	mov dl,al   
+	mov ah,2   
+	int 21h
+	JMP EXIT2
+	
+	L3:
+	
+	MOV AH, 9 
+	MOV BL, 14
+	MOV CX,1
+	INT 10H 
+	mov dl,al   
+	mov ah,2   
+	int 21h
+	JMP EXIT2
+
+;	
+	
+	EXIT2:
+ 	MOV BX, BP
+ 	mov cx, di
+ 	
+ 	
+ 	RET
